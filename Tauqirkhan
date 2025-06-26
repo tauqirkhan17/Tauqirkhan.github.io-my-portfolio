@@ -295,9 +295,6 @@
                     charIndex--;
                 } else {
                     typewriterElement.textContent = currentText.substring(0, charIndex + 1);
-                 
-
-typewriterElement.textContent = currentText.substring(0, charIndex + 1);
                     charIndex++;
                 }
 
