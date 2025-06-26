@@ -76,7 +76,10 @@
                 <a href="#achievements" class="text-slate-300 hover:text-accent transition-colors duration-300">Achievements</a>
                 <a href="#contact" class="border border-accent text-accent px-4 py-2 rounded-md hover:bg-accent/10 transition-colors duration-300">Contact</a>
             </nav>
-            <div class="md:hidden">
+                        <div class="md:hidden">
+
+                            
+
                 <a href="#contact" class="bg-accent text-slate-900 px-4 py-2 rounded-md font-semibold">Contact</a>
             </div>
         </div>
@@ -90,11 +93,16 @@
                 <h2 class="text-4xl sm:text-6xl md:text-7xl font-bold text-slate-100">Tauqir Khan.</h2>
                 <h3 id="typewriter-text" class="text-3xl sm:text-5xl md:text-6xl font-bold text-slate-400 mt-2 h-20"></h3>
                 <p class="text-lg text-slate-400 mt-6 max-w-2xl">
-                    I'm a B.Tech student specializing in AI & ML with a passion for building and scaling digital brands. From SEO-driven content to managing high-growth social media campaigns, I thrive on turning creative strategies into measurable results.
+                    
+                    I am a creative and results-driven B.Tech Computer Science student with a passion for building and scaling digital brands. From SEO-driven content to managing high-growth social media campaigns, I thrive on turning creative strategies into measurable results.
                 </p>
-                <a href="#experience" class="inline-block mt-8 bg-accent text-slate-900 font-bold px-8 py-4 rounded-md hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/20">Explore My Work</a>
+                <!-- Resume Section -->
+
+                <a href="Tauqir_khan_Resume.pdf" class="inline-block mt-8 bg-accent text-slate-900 font-bold px-8 py-4 rounded-md hover:bg-amber-400 transition-colors shadow-lg shadow-amber-500/20">Download CV</a>
             </div>
         </section>
+        
+
 
         <section id="experience" class="py-24">
             <h3 class="text-3xl font-bold text-center mb-16 reveal">Professional Experience</h3>
@@ -108,7 +116,7 @@
                             <p class="text-sm text-accent mb-1">Nov 2024 - Apr 2025</p>
                             <h4 class="font-bold text-xl text-slate-100">Social Media Manager</h4>
                             <p class="text-slate-400 font-semibold mb-2">Skybizz Aviation, Pune</p>
-                            <p class="text-slate-300 text-left">Managed multi-platform content strategy, boosting follower count by 30% in one month and designing over 50 posts with 90%+ positive feedback.</p>
+                            <p class="text-slate-300 text-left">Managed multi-platform content strategy, boosting follower count by 30% in three month and designing over 50+ posts with 90%+ positive feedback.</p>
                         </div>
                     </div>
                 </div>
@@ -125,21 +133,10 @@
                     </div>
                 </div>
 
-                <div class="relative mb-12 reveal">
-                    <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-5 h-5 bg-accent rounded-full border-4 border-slate-800"></div>
-                    <div class="md:w-[calc(50%-2rem)] md:mr-auto text-left md:text-right">
-                        <div class="glass-card p-6 rounded-lg timeline-card">
-                            <p class="text-sm text-accent mb-1">Jan 2024 - Sep 2024</p>
-                            <h4 class="font-bold text-xl text-slate-100">Co-founder & Digital Strategist</h4>
-                            <p class="text-slate-400 font-semibold mb-2">Rubi (Startup)</p>
-                            <p class="text-slate-300 text-left">Co-founded a tech startup, leading digital strategy from concept to launch. Developed brand identity and executed go-to-market social media campaigns.</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
-        <section id="skills" class="py-24">
+        <section id="skills" class="py-12 md:py-20 lg:py-24">
             <h3 class="text-3xl font-bold text-center mb-16 reveal">Core Competencies</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-all duration-300 hover:border-accent hover:-translate-y-2">
@@ -148,21 +145,22 @@
                         <li>SEO Optimization</li>
                         <li>Social Media Marketing</li>
                         <li>Content Marketing</li>
-                        <li>Strategic Link Building</li>
+                        <li>Link Building</li>
                     </ul>
                 </div>
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-all duration-300 hover:border-accent hover:-translate-y-2" style="transition-delay: 100ms;">
                     <h4 class="font-bold text-xl mb-3 text-accent">Content & Design</h4>
                     <ul class="space-y-2 text-slate-300">
-                        <li>Content Creation & Writing</li>
+                        <li>Content Writing</li>
+                        <li>Content Creation</li>
                         <li>Brand Storytelling</li>
-                        <li>Graphic Design (Canva)</li>
+                        <li>Graphic Designing</li>
                     </ul>
                 </div>
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-all duration-300 hover:border-accent hover:-translate-y-2" style="transition-delay: 200ms;">
-                    <h4 class="font-bold text-xl mb-3 text-accent">Professional</h4>
+                    <h4 class="font-bold text-xl mb-3 text-accent">Professional Skill</h4>
                     <ul class="space-y-2 text-slate-300">
-                        <li>Public Speaking (Toastmasters)</li>
+                        <li>Public Speaking</li>
                         <li>Leadership & Teamwork</li>
                         <li>Communication</li>
                     </ul>
@@ -174,24 +172,30 @@
             <h3 class="text-3xl font-bold text-center mb-16 reveal">Impact & Achievements</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto mb-16">
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-2">
-                    <p class="text-6xl font-bold text-accent mb-2">100%</p>
+                    <p class="text-6xl font-bold text-accent mb-2">25%</p>
                     <p class="font-semibold text-slate-200">Organic Traffic Boost</p>
-                    <p class="text-sm text-slate-400">Achieved in just one month</p>
+                    <p class="text-sm text-slate-400">SEO & Content Optimization</p>
                 </div>
                  <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-2">
+                    <p class="text-6xl font-bold text-accent mb-2">50+</p>
+                    <p class="font-semibold text-slate-200">Content Pieces Designed</p>
+                    <p class="text-sm text-slate-400">With 90%+ Positive Feedback</p>
+                </div>
+
+                <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-2">
+                    <p class="text-6xl font-bold text-accent mb-2">200+</p>
+                    <p class="font-semibold text-slate-200">High-Quality Backlinks</p>
+                    <p class="text-sm text-slate-400">Achieved in 4 Weeks</p>
+                </div>
+                <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-3">
                     <p class="text-6xl font-bold text-accent mb-2">30%</p>
                     <p class="font-semibold text-slate-200">Social Follower Growth</p>
                     <p class="text-sm text-slate-400">Across all major platforms</p>
                 </div>
-                 <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105">
-                    <p class="text-6xl font-bold text-accent mb-2">5x</p>
-                    <p class="font-semibold text-slate-200">Best Speaker</p>
-                    <p class="text-sm text-slate-400">Awarded at Toastmasters</p>
-                </div>
             </div>
-            
+        
             <div class="reveal glass-card p-4 md:p-8 rounded-xl">
-                <h4 class="text-xl font-bold text-slate-200 text-center mb-4">Key Performance Metrics</h4>
+                <h3 class="text-2xl font-bold text-slate-200 text-center mb-4">Key Performance Metrics</h3>
                 <div class="chart-container">
                     <canvas id="achievementsChart"></canvas>
                 </div>
@@ -202,7 +206,7 @@
              <h3 class="text-3xl font-bold text-center mb-16 reveal">Education & Certifications</h3>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-8 max-w-6xl mx-auto">
                 <div class="reveal md:col-span-2 glass-card p-6 rounded-lg">
-                    <h4 class="font-bold text-xl text-slate-100 mb-4">Formal Education</h4>
+                    <h4 class="font-bold text-xl text-slate-100 mb-4">Education</h4>
                     <div class="border-l-4 border-accent pl-4 mb-6">
                         <p class="font-bold text-slate-200">B.Tech in Computer Science (AI & ML)</p>
                         <p class="text-slate-400">RCET, Bhilai, Chhattisgarh</p>
@@ -215,33 +219,71 @@
                     </div>
                 </div>
                 <div class="reveal md:col-span-3 glass-card p-6 rounded-lg">
-                    <h4 class="font-bold text-xl text-slate-100 mb-4">Industry Certifications</h4>
+                    <h4 class="font-bold text-xl text-slate-100 mb-4">Certifications</h4>
                      <ul class="space-y-3 text-slate-300 columns-1 sm:columns-2">
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">SEO, Link Building & Content Writing</span> - Udemy</span></li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">Content Marketing</span> - HubSpot Academy</span></li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">Fundamentals of Digital Marketing</span> - Google</span></li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">SEO</span> - E-marketing Institute</span></li>
+                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">Udemy</span> - SEO: Link Building & Content Writing</span></li>
+                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">Hubspot Academy</span> - Content Marketing </span></li>
+                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">Google</span> - Fundamental of Digital Marketing </span></li>
+                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">E-marketing Institute </span> - SEO</span></li>
                     </ul>
                 </div>
             </div>
         </section>
+    
         
-        <section id="contact" class="text-center py-24">
-            <h3 class="text-3xl font-bold text-slate-100 mb-2 reveal">Get In Touch</h3>
-            <p class="text-lg text-slate-400 mb-8 max-w-xl mx-auto reveal">My inbox is always open. Whether you have a question, a project proposal, or just want to say hi, I'll get back to you!</p>
-            <a href="mailto:tauqirkhan281@gmail.com" class="reveal inline-block bg-transparent border-2 border-accent text-accent font-bold px-8 py-4 rounded-md hover:bg-accent/10 transition-colors duration-300 text-lg">Say Hello</a>
-        </section>
-    </main>
 
-    <footer class="text-center pb-8">
-        <p class="text-slate-500 text-sm">Designed & Built by Tauqir Khan & AI</p>
+<!-- Contact Section -->
+<section id="contact" class="text-center py-12 md:py16">
+    
+            <h3 class="text-3xl font-bold text-slate-100 mb-2 reveal">Let's Connect</h3>
+            <p class="text-lg text-slate-400 mb-8 max-w-xl mx-auto reveal">Whether you're hiring, collaborating, or just want to network — I'm just a message away.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mt-8 reveal">
+                  <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/tauqir-khan-79813a251/" target="_blank" class="flex items-center gap-2 text-accent hover:underline text-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.4 8h4.2v12H.4V8zm7.6 0h4v1.7h.1c.6-1.1 2-2.2 4-2.2 4.3 0 5.1 2.8 5.1 6.3v7.1h-4.2v-6.3c0-1.5 0-3.5-2.1-3.5s-2.5 1.6-2.5 3.4v6.4H8V8z"/></svg>
+                            LinkedIn
+                              </a>
+
+                                <!-- Email -->
+                                  <a href="mailto:tauqirkhan281@gmail.com" class="flex items-center gap-2 text-accent hover:underline text-lg">
+                                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v1l-10 6L2 5V4zm0 2.2l8.4 5.1c.5.3 1.2.3 1.6 0L22 6.2V20a2 2 0 01-2 2H4a2 2 0 01-2-2V6.2z"/></svg>
+                                          tauqirkhan281@gmail.com
+                                            </a>
+
+                                              <!-- Phone -->
+                                                <a href="tel:+918544634850" class="flex items-center gap-2 text-accent hover:underline text-lg">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" viewBox="0 0 24 24" fill="currentColor"><path d="M3 2a1 1 0 011-1h3a1 1 0 011 1v3a1 1 0 01-.29.71l-1.25 1.25a16 16 0 007.59 7.59l1.25-1.25A1 1 0 0116 13h3a1 1 0 011 1v3a1 1 0 01-1 1h-.5C10.49 18 6 13.51 6 7.5V7a1 1 0 011-1h3a1 1 0 011 1v.5a1 1 0 01-.29.71L8.91 10.91A18.35 18.35 0 003.29 5.29 1 1 0 013 4V2z"/></svg>
+                                                        +91 8544634850
+                                                          </a>
+                                                          </div>
+        </section>
+    
+    </main>
+                                        
+                                    
+                                        
+                                        
+                                                                          
+                                                                                  
+                                                                                    
+                                                                                            
+
+                                                                                        
+                                                                                
+                                                                                        
+                                                                                                
+                                                                                                                            
+                                                                                                                    
+                                        <footer class="text-center pb-8">
+        <p class="text-slate-500 text-sm">Designed & Built by Tauqir Khan.</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Typewriter Effect
             const typewriterElement = document.getElementById('typewriter-text');
-            const texts = ["I build things for the web.", "I drive growth with SEO.", "I craft engaging content."];
+            const texts = ["I write content that connects.", "I drive growth with SEO.", "I craft engaging content."];
             let textIndex = 0;
             let charIndex = 0;
             let isDeleting = false;
@@ -253,6 +295,9 @@
                     charIndex--;
                 } else {
                     typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                 
+
+typewriterElement.textContent = currentText.substring(0, charIndex + 1);
                     charIndex++;
                 }
 
@@ -263,7 +308,7 @@
                     textIndex = (textIndex + 1) % texts.length;
                 }
 
-                const typeSpeed = isDeleting ? 100 : 150;
+                const typeSpeed = isDeleting ? 75 : 150;
                 setTimeout(typeWriter, typeSpeed);
             }
             if(typewriterElement) typeWriter();
@@ -272,7 +317,7 @@
             const achievementsChartCtx = document.getElementById('achievementsChart');
             if (achievementsChartCtx) {
                 const achievementsData = {
-                    labels: ['Organic Traffic Boost', 'Social Follower Growth', 'High-Quality Backlinks (in 4 weeks)'],
+                    labels: ['Organic Traffic Boost', 'Social Media Growth', 'High-Quality Backlinks'],
                     datasets: [{
                         label: 'Performance Metric',
                         data: [100, 30, 200],
