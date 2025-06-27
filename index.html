@@ -4,76 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tauqir Khan | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-
-    #typewriter-text {
-      min-height: 4rem;
-    }
-    @media (min-width: 640px) {
-      #typewriter-text {
-          min-height: 4.5rem;
-      }
-    }
-    @media (min-width: 768px) {
-      #typewriter-text {
-          min-height: 5.5rem;
-      }
-    }
-
-  </style>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins and Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Midnight Blue & Gold -->
-    <!-- Application Structure Plan: A highly dynamic, single-page portfolio designed for an immersive user journey. The structure uses full-viewport sections and on-scroll reveal animations to guide the user through a narrative: from an impactful animated hero, to a detailed interactive timeline of experience, a visually engaging skills showcase, high-impact achievements with a custom chart, and finally, education and contact details. This non-linear, story-driven structure is chosen to create a memorable and impressive experience that stands out from standard resumes. -->
-    <!-- Visualization & Content Choices: 
-    - Report Info: Key Achievements (Follower Growth, Traffic Growth, Backlinks, Speaker Awards). Goal: Impress & Inform. Viz/Presentation: 'Glassmorphism' cards with large typography and icons + an interactive bar chart. Interaction: Hover effects on cards, tooltips on the chart. Justification: This combination provides both at-a-glance impact and detailed, explorable data, making achievements feel more significant. Library: Chart.js for the chart, HTML/CSS for cards.
-    - Report Info: Experience Section (including new 'Rubi' startup). Goal: Organize & Detail. Viz/Presentation: Animated vertical timeline with alternating content cards. Interaction: 3D tilt effect on hover for cards, on-scroll reveal animations. Justification: The timeline format clearly shows career progression, while the advanced animations and interactivity make exploring the details feel engaging and modern. Method: HTML/CSS/JS.
-    - Report Info: Skills. Goal: Organize. Viz/Presentation: Grouped cards with a subtle glow-on-hover effect. Interaction: Hover animations. Justification: Cleanly categorizes skills for readability while maintaining the high-end aesthetic of the site through micro-interactions. Method: HTML/CSS.
-    - Report Info: Summary/Hero. Goal: Engage & Introduce. Viz/Presentation: Full-screen hero with a typewriter text animation. Interaction: Animated text reveal. Justification: Creates a strong, memorable first impression and immediately establishes a professional, tech-savvy tone. Method: HTML/CSS/JS. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    
     <style>
-
-        
-
-  
-  
+        /* Base styles for body and headings */
         body {
             font-family: 'Lato', sans-serif;
-            background-color: #0a192f;
-            color: #ccd6f6;
+            background-color: #0a192f; /* Dark Navy/Midnight Blue */
+            color: #ccd6f6; /* Light Grayish Blue */
+            overflow-x: hidden; /* Prevent horizontal scroll due to off-canvas menu */
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
-            color: #e6f1ff;
+            color: #e6f1ff; /* Lighter Blue */
         }
+        /* Utility classes for fonts */
         .font-poppins { font-family: 'Poppins', sans-serif; }
         .font-lato { font-family: 'Lato', sans-serif; }
+        /* Glassmorphism effect for cards */
         .glass-card {
-            background: rgba(23, 44, 78, 0.4);
+            background: rgba(23, 44, 78, 0.4); /* Darker blue with transparency */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(42, 143, 222, 0.2);
+            border: 1px solid rgba(204, 136, 0, 0.2); /* Border with new accent color */
         }
-        .text-accent { color: #f59e0b; }
-        .bg-accent { background-color: #f59e0b; }
-        .border-accent { border-color: #f59e0b; }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 400px;
-            max-height: 50vh;
-        }
+        /* Accent colors (Dark Goldenrod) */
+        .text-accent { color: #CC8800; } /* Refined gold/amber */
+        .bg-accent { background-color: #CC8800; } /* Refined gold/amber */
+        .border-accent { border-color: #CC8800; } /* Refined gold/amber */
+        
+        /* Timeline card 3D tilt effect */
         .timeline-card {
             transform-style: preserve-3d;
             transition: transform 0.5s;
@@ -81,6 +49,7 @@
         .timeline-card:hover {
             transform: perspective(1000px) rotateY(5deg) rotateX(10deg) scale3d(1.05, 1.05, 1.05);
         }
+        /* Reveal animation for sections */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
@@ -90,93 +59,140 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Added min-height for the typewriter text to prevent layout shifts */
+        #typewriter-text {
+            min-height: 4rem; /* Adjust this value based on the tallest phrase and font size */
+        }
+        /* Responsive min-height for typewriter text */
+        @media (min-width: 640px) { /* sm breakpoint */
+            #typewriter-text {
+                min-height: 4.5rem; /* Adjust for sm:text-5xl */
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            #typewriter-text {
+                min-height: 5.5rem; /* Adjust for md:text-6xl */
+            }
+        }
+
+        /* Mobile Menu Specific Styles */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Start off-screen */
+            width: 70%; /* Adjust width as needed */
+            max-width: 300px;
+            height: 100%;
+            background-color: #1a2b40; /* Slightly lighter dark blue */
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+        .mobile-menu.open {
+            right: 0; /* Slide in */
+        }
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: #e6f1ff; /* Lighter blue for close icon */
+            cursor: pointer;
+        }
+        .mobile-menu nav a {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #ccd6f6; /* Light grayish blue for links */
+            transition: color 0.3s;
+        }
+        .mobile-menu nav a:hover {
+            color: #CC8800; /* New accent color on hover */
+        }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Header/Navbar Section -->
     <header id="navbar" class="bg-slate-900/50 backdrop-blur-md sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-xl md:text-2xl font-bold text-accent">TK</h1>
+            <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center space-x-6">
                 <a href="#experience" class="text-slate-300 hover:text-accent transition-colors duration-300">Experience</a>
-                <a href="#about" class="text-slate-300 hover:text-accent transition-colors duration-300">About</a>
                 <a href="#skills" class="text-slate-300 hover:text-accent transition-colors duration-300">Skills</a>
                 <a href="#achievements" class="text-slate-300 hover:text-accent transition-colors duration-300">Achievements</a>
+                <a href="#education" class="text-slate-300 hover:text-accent transition-colors duration-300">Education</a>
                 <a href="#contact" class="border border-accent text-accent px-4 py-2 rounded-md hover:bg-accent/10 transition-colors duration-300">Contact</a>
             </nav>
-                        <div class="md:hidden">
-
-                            
-
-                <a href="#contact" class="bg-accent text-slate-900 px-4 py-2 rounded-md font-semibold">Contact</a>
+            <!-- Mobile Menu Toggle Button (Hamburger Icon) -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </header>
 
-
-<main class="container mx-auto px-6">
-
-
-    <section id="home" class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center px-6 gap-10 md:gap-20 mt-24">
-  <!-- ✅ Left: Text Content -->
-  <div class="text-center md:text-left max-w-xl">
-    <p class="text-accent text-sm font-bold uppercase tracking-wide mb-2">Nice to see you here 👋</p>
-    <h1 class="text-4xl sm:text-5xl font-bold text-white">Hi, I'm <span class="text-accent">Tauqir Khan</span></h1>
-      <h3 id="typewriter-text" class="text-3xl sm:text-5xl md:text-6xl font-bold text-slate-400 mt-2 h-20"></h3>
-                <p class="text-lg text-slate-400 mt-6 max-w-2xl">
-                    
-    <p class="mt-4 text-lg text-slate-400">
-      Developer • Engineer • Digital Strategist <br />
-      Passionate about building & scaling digital brands.
-    </p>
-
-    <div class="flex items-center justify-center md:justify-start gap-4 mt-6 text-white text-sm font-semibold">
-      <div>
-        <p class="text-slate-400">Experience</p>
-        <p class="text-white">Fresher</p>
-      </div>
-      <div class="h-10 w-px bg-slate-600"></div>
-      <div>
-        <p class="text-slate-400">Projects</p>
-        <p class="text-white">25+</p>
-      </div>
+    <!-- Mobile Menu (Off-Canvas) -->
+    <div id="mobile-menu" class="mobile-menu">
+        <button id="mobile-menu-close-button" class="mobile-menu-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="flex flex-col items-center">
+            <a href="#home" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">About</a> <!-- Added About link -->
+            <a href="#experience" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">Experience</a>
+            <a href="#skills" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">Skills</a>
+            <a href="#achievements" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">Achievements</a>
+            <a href="#education" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">Education</a>
+            <a href="#contact" class="border border-accent text-accent px-6 py-3 rounded-md hover:bg-accent/10 transition-colors duration-300">Contact</a>
+        </nav>
     </div>
 
-    <!-- ✅ Download Button -->
-    <a href="tauqir_khan_resume.pdf" download class="inline-block mt-6 bg-accent text-slate-900 font-bold px-6 py-3 rounded-md hover:bg-amber-400 transition shadow-lg shadow-amber-500/20">
-      Download CV
-    </a>
-  </div>
+    <main class="container mx-auto px-6">
 
-  <!-- ✅ Right: Image -->
-  <div class="w-72 h-72 sm:w-80 sm:h-80 rounded-lg overflow-hidden shadow-xl shadow-yellow-500/20 hover:scale-105 transition duration-300">
-    <img src="tauqir_khan_photo.jpg" alt="Tauqir Khan" class="w-full h-full object-cover object-center" />
-  </div>
-    </section>
-
+        <!-- Home/Hero Section - Updated with About content -->
+        <section id="home" class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center px-6 gap-10 md:gap-20 mt-24">
+            <!-- Left: Text Content -->
+            <div class="text-center md:text-left max-w-xl">
+                <p class="text-accent text-sm font-bold uppercase tracking-wide mb-2">Nice to see you here 👋</p>
+                <h1 class="text-4xl sm:text-5xl font-bold text-white">Hi, I'm <span class="text-accent">Tauqir Khan</span></h1>
+                <h3 id="typewriter-text" class="text-3xl sm:text-5xl md:text-6xl font-bold text-slate-400 mt-2"></h3>
                 
+                <!-- Moved About section content here -->
+                <p class="text-slate-300 leading-relaxed mt-6">
+                    I am a creative and results-driven B.Tech Computer Science student with a passion for building and scaling digital brands. From SEO-driven content to managing high-growth social media campaigns, I thrive on turning creative strategies into measurable results.
+                </p>
 
-                    <section id="about" class="py-24">
-  <h3 class="text-3xl font-bold text-center mb-16 reveal">About</h3>
+                <!-- Download CV Button -->
+                <a href="tauqir_khan_resume.pdf" download class="inline-block mt-6 bg-accent text-slate-900 font-bold px-6 py-3 rounded-md hover:bg-amber-400 transition shadow-lg shadow-amber-500/20">
+                    Download CV
+                </a>
+            </div>
 
-  <div class="relative max-w-3xl mx-auto">
-    <div class="glass-card p-6 rounded-lg timeline-card">
-      <p class="text-slate-300 leading-relaxed">
-        I am a creative and results-driven B.Tech Computer Science student with a passion for building and scaling digital brands. From SEO-driven content to managing high-growth social media campaigns, I thrive on turning creative strategies into measurable results.
-      </p>
-    </div>
-  </div>
-                    </section>
-                
+            <!-- Right: Image -->
+            <div class="w-72 h-72 sm:w-80 sm:h-80 rounded-lg overflow-hidden shadow-xl shadow-yellow-500/20 hover:scale-105 transition duration-300">
+                <!-- Placeholder image for Tauqir Khan's photo -->
+                <img src="https://placehold.co/320x320/0a192f/CC8800?text=Tauqir+Khan" alt="Tauqir Khan" class="w-full h-full object-cover object-center" />
+            </div>
+        </section>
 
-
+        <!-- Experience Section -->
         <section id="experience" class="py-24">
             <h3 class="text-3xl font-bold text-center mb-16 reveal">Professional Experience</h3>
             <div class="relative max-w-3xl mx-auto">
+                <!-- Vertical timeline line -->
                 <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-slate-700"></div>
                 
+                <!-- Experience 1: Social Media Manager -->
                 <div class="relative mb-12 reveal">
+                    <!-- Timeline dot -->
                     <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-5 h-5 bg-accent rounded-full border-4 border-slate-800"></div>
+                    <!-- Card content (right on desktop, full width on mobile) -->
                     <div class="md:w-[calc(50%-2rem)] md:mr-auto text-left md:text-right">
                         <div class="glass-card p-6 rounded-lg timeline-card">
                             <p class="text-sm text-accent mb-1">Nov 2024 - Apr 2025</p>
@@ -187,8 +203,11 @@
                     </div>
                 </div>
 
+                <!-- Experience 2: Digital Marketing Associate -->
                 <div class="relative mb-12 reveal">
+                    <!-- Timeline dot -->
                     <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-5 h-5 bg-accent rounded-full border-4 border-slate-800"></div>
+                    <!-- Card content (left on desktop, full width on mobile) -->
                     <div class="md:w-[calc(50%-2rem)] md:ml-auto">
                         <div class="glass-card p-6 rounded-lg timeline-card">
                            <p class="text-sm text-accent mb-1">Oct 2024 - Nov 2024</p>
@@ -198,13 +217,14 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
+        <!-- Skills Section -->
         <section id="skills" class="py-12 md:py-20 lg:py-24">
             <h3 class="text-3xl font-bold text-center mb-16 reveal">Core Competencies</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Digital Marketing Skills -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-all duration-300 hover:border-accent hover:-translate-y-2">
                     <h4 class="font-bold text-xl mb-3 text-accent">Digital Marketing</h4>
                     <ul class="space-y-2 text-slate-300">
@@ -214,6 +234,7 @@
                         <li>Link Building</li>
                     </ul>
                 </div>
+                <!-- Content & Design Skills -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-all duration-300 hover:border-accent hover:-translate-y-2" style="transition-delay: 100ms;">
                     <h4 class="font-bold text-xl mb-3 text-accent">Content & Design</h4>
                     <ul class="space-y-2 text-slate-300">
@@ -223,6 +244,7 @@
                         <li>Graphic Designing</li>
                     </ul>
                 </div>
+                <!-- Professional Skills -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-all duration-300 hover:border-accent hover:-translate-y-2" style="transition-delay: 200ms;">
                     <h4 class="font-bold text-xl mb-3 text-accent">Professional Skill</h4>
                     <ul class="space-y-2 text-slate-300">
@@ -234,25 +256,29 @@
             </div>
         </section>
         
+        <!-- Achievements Section -->
         <section id="achievements" class="py-24">
-            <h3 class="text-3xl font-bold text-center mb-16 reveal">Impact & Achievements</h3>
+            <h3 class="text-3xl font-bold text-center mb-16 reveal">Achievements</h3> <!-- Changed title to "Achievements" -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto mb-16">
+                <!-- Achievement Card 1 -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-2">
                     <p class="text-6xl font-bold text-accent mb-2">25%</p>
                     <p class="font-semibold text-slate-200">Organic Traffic Boost</p>
                     <p class="text-sm text-slate-400">SEO & Content Optimization</p>
                 </div>
+                <!-- Achievement Card 2 -->
                  <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-2">
                     <p class="text-6xl font-bold text-accent mb-2">50+</p>
                     <p class="font-semibold text-slate-200">Content Pieces Designed</p>
                     <p class="text-sm text-slate-400">With 90%+ Positive Feedback</p>
                 </div>
-
+                <!-- Achievement Card 3 -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-2">
                     <p class="text-6xl font-bold text-accent mb-2">200+</p>
                     <p class="font-semibold text-slate-200">High-Quality Backlinks</p>
                     <p class="text-sm text-slate-400">Achieved in 4 Weeks</p>
                 </div>
+                <!-- Achievement Card 4 -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-3">
                     <p class="text-6xl font-bold text-accent mb-2">30%</p>
                     <p class="font-semibold text-slate-200">Social Follower Growth</p>
@@ -260,17 +286,14 @@
                 </div>
             </div>
         
-            <div class="reveal glass-card p-4 md:p-8 rounded-xl">
-                <h3 class="text-2xl font-bold text-slate-200 text-center mb-4">Key Performance Metrics</h3>
-                <div class="chart-container">
-                    <canvas id="achievementsChart"></canvas>
-                </div>
-            </div>
+            <!-- The "Key Performance Metrics" chart section has been removed. -->
         </section>
 
+        <!-- Education Section -->
         <section id="education" class="py-24">
              <h3 class="text-3xl font-bold text-center mb-16 reveal">Education & Certifications</h3>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-8 max-w-6xl mx-auto">
+                <!-- Education Details -->
                 <div class="reveal md:col-span-2 glass-card p-6 rounded-lg">
                     <h4 class="font-bold text-xl text-slate-100 mb-4">Education</h4>
                     <div class="border-l-4 border-accent pl-4 mb-6">
@@ -284,6 +307,7 @@
                         <p class="text-sm text-slate-500">2022</p>
                     </div>
                 </div>
+                <!-- Certifications Details -->
                 <div class="reveal md:col-span-3 glass-card p-6 rounded-lg">
                     <h4 class="font-bold text-xl text-slate-100 mb-4">Certifications</h4>
                      <ul class="space-y-3 text-slate-300 columns-1 sm:columns-2">
@@ -296,205 +320,144 @@
             </div>
         </section>
     
-        
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 px-4">
+            <h3 class="text-3xl font-bold text-center mb-10 reveal">Contact Me</h3>
 
+            <!-- Compact Contact Info Grid -->
+            <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center reveal">
+                <!-- Location -->
+                <div class="glass-card p-4 rounded-md">
+                    <div class="text-xl text-white mb-2">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <p class="text-sm font-semibold text-accent">Bhilai, Chhattisgarh</p>
+                </div>
 
-<!-- Contact Section -->
+                <!-- Phone -->
+                <div class="glass-card p-4 rounded-md">
+                    <div class="text-xl text-white mb-2">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <a href="tel:+918544634850" class="text-sm font-semibold text-accent hover:underline">
+                        +91 85446 34850
+                    </a>
+                </div>
 
-    <section id="contact" class="py-24 px-6">
-  <h3 
+                <!-- Email -->
+                <div class="glass-card p-4 rounded-md">
+                    <div class="text-xl text-white mb-2">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <a href="mailto:tauqirkhan281@gmail.com" class="text-sm font-semibold text-accent hover:underline">
+                        tauqirkhan281@gmail.com
+                    </a>
+                </div>
+<!-- Resume -->
+                <div class="glass-card p-4 rounded-md">
+                    <div class="text-xl text-white mb-2">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <a href="tauqir_khan_resume.pdf" download class="text-sm font-semibold text-accent hover:underline">
+                        Download CV
+                    </a>
+                </div>
+            </div>
 
-    <section id="contact" class="py-16 px-4">
-  <h3 class="text-3xl font-bold text-center mb-10 reveal">Contact Me</h3>
-
-  <!-- 🔹 Compact Contact Info Grid -->
-  <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center reveal">
-
-    <!-- 📍 Location -->
-    <div class="glass-card p-4 rounded-md">
-      <div class="text-xl text-white mb-2">
-        <i class="fas fa-map-marker-alt"></i>
-      </div>
-        
-      <a href="https://www.google.com/maps/place/Rungta+College+of+Engineering+and+Technology/@21.1998582,81.3507793,17z"
-         target="_blank"
-         class="text-sm text-accent font-semibold hover:underline">
-        Bhilai, Chhattisgarh
-      </a>
-      
-    </div>
-
-    <!-- 📞 Phone -->
-    <div class="glass-card p-4 rounded-md">
-      <div class="text-xl text-white mb-2">
-        <i class="fas fa-phone-alt"></i>
-      </div>
-      <a href="tel:+918544634850" class="text-sm font-semibold text-accent hover:underline">
-        +91 85446 34850
-      </a>
-    </div>
-
-    <!-- ✉️ Email -->
-    <div class="glass-card p-4 rounded-md">
-      <div class="text-xl text-white mb-2">
-        <i class="fas fa-envelope"></i>
-      </div>
-      <a href="mailto:tauqirkhan281@gmail.com" class="text-sm font-semibold text-accent hover:underline">
-        tauqirkhan281@gmail.com
-      </a>
-    </div>
-
-    <!-- 📄 Resume -->
-    <div class="glass-card p-4 rounded-md">
-      <div class="text-xl text-white mb-2">
-        <i class="fas fa-file-alt"></i>
-      </div>
-      <a href="tauqir_khan_resume.pdf" download class="text-sm font-semibold text-accent hover:underline">
-        Download CV
-      </a>
-    </div>
-  </div>
-
-  <!-- 🔗 Social Icons (Same as before) -->
-  <div class="mt-10 text-center reveal">
-    <h4 class="text-lg font-bold text-slate-100 mb-4">Follow Me</h4>
-    <div class="flex justify-center space-x-6 text-4xl text-accent">
-      <a href="https://www.linkedin.com/in/tauqir-khan-79813a251/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://youtube.com/@thegrowthhub17" target="_blank"><i class="fab fa-youtube"></i></a>
-      <a href="https://twitter.com/tauqirkhanmwo" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://instagram.com/thegrowwthhub" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://facebook.com/your.profile" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    </div>
-  </div>
-    </section>
+            <!-- Social Icons -->
+            <div class="mt-10 text-center reveal">
+                <h4 class="text-lg font-bold text-slate-100 mb-4">Follow Me</h4>
+                <div class="flex justify-center space-x-6 text-3xl text-accent">
+                    <a href="https://www.linkedin.com/in/tauqir-khan-79813a251/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://youtube.com/@thegrowthhub17" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://twitter.com/tauqirkhanmwo" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/thegrowwthhub" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/your.profile" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </section>
     </main>
-                                        
-                                    
-                                        
-                                        
-                                                                          
-                                                                                  
-                                                                                    
-                                                                                            
-
-                                                                                        
-                                                                                
-                                                                                                                                                        
-                                                                                                                           
-                                                                                                                    
-                                        <footer class="text-center pb-8">
-        <p class="text-slate-500 text-sm">Designed & Built by Tauqir Khan.</p>
-    </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Typewriter Effect
-            const typewriterElement = document.getElementById('typewriter-text');
-            const texts = ["I write content that connects.", "I drive growth with SEO.", "I craft engaging content."];
-            let textIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
+        // Typewriter effect for the hero section
+        const phrases = ["Digital Marketer", "Content Strategist", "SEO Specialist"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterTextElement = document.getElementById('typewriter-text');
 
-            function typeWriter() {
-                min height 
-                const currentText = texts[textIndex];
-                if (isDeleting) {
-                    typewriterElement.textContent = currentText.substring(0, charIndex - 1);
-                    charIndex--;
-                } else {
-                    typewriterElement.textContent = currentText.substring(0, charIndex + 1);
-                    charIndex++;
-                }
-
-                if (!isDeleting && charIndex === currentText.length) {
-                    setTimeout(() => isDeleting = true, 2000);
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    textIndex = (textIndex + 1) % texts.length;
-                }
-
-                const typeSpeed = isDeleting ? 75 : 150;
-                setTimeout(typeWriter, typeSpeed);
-            }
-            if(typewriterElement) typeWriter();
-
-            // Chart.js
-            const achievementsChartCtx = document.getElementById('achievementsChart');
-            if (achievementsChartCtx) {
-                const achievementsData = {
-                    labels: ['Organic Traffic Boost', 'Social Media Growth', 'High-Quality Backlinks'],
-                    datasets: [{
-                        label: 'Performance Metric',
-                        data: [100, 30, 200],
-                        backgroundColor: 'rgba(245, 158, 11, 0.2)',
-                        borderColor: 'rgba(245, 158, 11, 1)',
-                        borderWidth: 2,
-                        borderRadius: 5,
-                    }]
-                };
-
-                const config = {
-                    type: 'bar',
-                    data: achievementsData,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        indexAxis: 'y',
-                        scales: {
-                            x: {
-                                beginAtZero: true,
-                                grid: { color: 'rgba(204, 214, 246, 0.1)' },
-                                ticks: {
-                                    color: '#8892b0',
-                                    font: { size: 12, family: "'Lato', sans-serif" },
-                                    callback: function(value, index) {
-                                        return index === 2 ? value : value + '%';
-                                    }
-                                }
-                            },
-                            y: {
-                                grid: { display: false },
-                                ticks: { color: '#ccd6f6', font: { size: 14, family: "'Poppins', sans-serif" }}
-                            }
-                        },
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                backgroundColor: '#0a192f',
-                                titleFont: { size: 16, family: "'Poppins', sans-serif" },
-                                bodyFont: { size: 14, family: "'Lato', sans-serif" },
-                                padding: 12,
-                                displayColors: false,
-                                callbacks: {
-                                    label: function(context) {
-                                        let value = context.parsed.x;
-                                        let label = context.label;
-                                        if (label.includes('Backlinks')) {
-                                            return `${value} Backlinks`;
-                                        }
-                                        return `${value}% Growth`;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                };
-                new Chart(achievementsChartCtx, config);
+        function typeWriter() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typewriterTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
             }
 
-            // Scroll Reveal Animation
-            const revealElements = document.querySelectorAll('.reveal');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                setTimeout(() => isDeleting = true, 1500); // Pause before deleting
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                setTimeout(() => {}, 500); // Pause before typing next phrase
+            }
+
+            const typingSpeed = isDeleting ? 50 : 100;
+            setTimeout(typeWriter, typingSpeed);
+        }
+
+        // Intersection Observer for reveal animations
+        const revealElements = document.querySelectorAll('.reveal');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
             });
-            revealElements.forEach(el => observer.observe(el));
+        }, observerOptions);
+
+        revealElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        window.onload = function() {
+            typeWriter(); // Start typewriter effect on load
+            // Chart.js initialization code has been removed as requested.
+        };
+
+        // Mobile Menu JavaScript
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenuCloseButton = document.getElementById('mobile-menu-close-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = mobileMenu.querySelectorAll('nav a'); // Get all links in mobile nav
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+        });
+
+        mobileMenuCloseButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = ''; // Restore scrolling
+        });
+
+        // Close mobile menu when a link is clicked (for smooth scroll)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = ''; // Restore scrolling
+            });
         });
     </script>
 </body>
 </html>
+       
