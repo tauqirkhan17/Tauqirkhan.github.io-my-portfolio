@@ -227,7 +227,7 @@
                 <h3 id="typewriter-text" class="text-2xl sm:text-3xl md:text-4xl font-bold text-text- mt-2"></h3>
                 
                 <!-- New Welcome/About paragraph -->
-                <p class="text-text-light leading-relaxed text-justify mt-6">
+                <p class="text-text-light leading-relaxed text-left mt-6">
                     Welcome to my profile! I'm Tauqir Khan, a 3rd-year B.Tech Computer Science student passionate about digital marketing, SEO, content creation, and tech innovation. Explore my projects, achievements, and skills — and let’s connect to create impactful digital experiences together!
                 </p>
 
@@ -446,7 +446,7 @@
             <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center reveal">
                 <!-- Location -->
                 <div class="glass-card p-4 rounded-md">
-                    <div class="text-xl text text-light mb-2">
+                    <div class="text-xl text-text-accent mb-2">
     <i class="fas fa-map-marker-alt"></i>
   </div>
   
@@ -488,7 +488,7 @@
 
             <!-- Social Icons -->
             <div class="mt-10 text-center reveal">
-                <h4 class="text-lg font-bold text-text-light mb-4">Follow Me</h4>
+                <h4 class="text-lg font-bold text-text-light mb-6">Follow Me</h4>
                 <div class="flex justify-center space-x-6 text-3xl text-accent">
                     <a href="https://www.linkedin.com/in/tauqir-khan-79813a251/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="https://youtube.com/@thegrowthhub17" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -501,34 +501,51 @@
     </main>
 
     <script>
-        // Typewriter effect for the hero section
-        const phrases = ["I drive growth with SEO", "I create impactful content", "I build and scale digital brands"];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typewriterTextElement = document.getElementById('typewriter-text');
+    const phrases = [
+        "I Drive Growth with SEO.",
+        "I Create Content that Connects.",
+        "I Build and Scale Digital Brands."
+    ];
 
-        function typeWriter() {
-            const currentPhrase = phrases[phraseIndex];
-            if (isDeleting) {
-                typewriterTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typewriterTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typewriterTextElement = document.getElementById('typewriter-text');
 
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                setTimeout(() => isDeleting = true, 1500); // Pause before deleting
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                setTimeout(() => {}, 500); // Pause before typing next phrase
-            }
+    function typeWriter() {
+        const currentPhrase = phrases[phraseIndex];
+        const words = currentPhrase.split(" ");
+        const firstPart = words.slice(0, 3).join(" ") + " ";
+        const secondPart = words.slice(3).join(" ");
+        const fullText = firstPart + secondPart;
 
-            const typingSpeed = isDeleting ? 50 : 100;
-            setTimeout(typeWriter, typingSpeed);
+        if (isDeleting) {
+            charIndex--;
+        } else {
+            charIndex++;
         }
+
+        const currentText = fullText.substring(0, charIndex);
+        const whitePart = currentText.substring(0, firstPart.length);
+        const accentPart = currentText.substring(firstPart.length);
+
+        typewriterTextElement.innerHTML = `
+            <span class="text-white">${whitePart}</span><span class="text-accent">${accentPart}</span>
+        `;
+
+        if (!isDeleting && charIndex === fullText.length) {
+            setTimeout(() => isDeleting = true, 1500);
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+        }
+
+        const typingSpeed = isDeleting ? 50 : 100;
+        setTimeout(typeWriter, typingSpeed);
+    }
+
+    typeWriter();
+
 
         // Intersection Observer for reveal animations
         const revealElements = document.querySelectorAll('.reveal');
