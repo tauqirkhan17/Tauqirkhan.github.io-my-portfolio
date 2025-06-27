@@ -15,39 +15,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Base styles for body and headings */
+        /* Define CSS Variables for Original Color Palette: Midnight Blue & Gold */
+        :root {
+            --bg-primary: #0a192f; /* Midnight Blue */
+            --text-light: #ccd6f6; /* Light Grayish Blue */
+            --text-muted: #94a3b8; /* Tailwind's slate-400 */
+            --accent-main: #f59e0b; /* Original Gold/Amber */
+            --accent-dark: #e6910a; /* Slightly darker Gold for hover/active */
+            --glass-bg: rgba(23, 44, 78, 0.4); /* Darker blue with transparency */
+            --glass-border: rgba(42, 143, 222, 0.2); /* Lighter blue border with transparency */
+        }
+
+        /* Base styles for body and headings using CSS variables */
         body {
             font-family: 'Lato', sans-serif;
-            background-color: #0a192f; /* Dark Navy/Midnight Blue */
-            color: #ccd6f6; /* Light Grayish Blue */
+            background-color: var(--bg-primary);
+            color: var(--text-light);
             overflow-x: hidden; /* Prevent horizontal scroll due to off-canvas menu */
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
-            color: #e6f1ff; /* Lighter Blue */
+            color: var(--text-light); /* Headings are light text */
         }
         /* Utility classes for fonts */
         .font-poppins { font-family: 'Poppins', sans-serif; }
         .font-lato { font-family: 'Lato', sans-serif; }
         /* Glassmorphism effect for cards */
         .glass-card {
-            background: rgba(23, 44, 78, 0.4); /* Darker blue with transparency */
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(204, 136, 0, 0.2); /* Border with new accent color */
+            border: 1px solid var(--glass-border);
+            border-radius: 0.75rem; /* Tailwind's rounded-lg */
         }
-        /* Accent colors (Dark Goldenrod) */
-        .text-accent { color: #CC8800; } /* Refined gold/amber */
-        .bg-accent { background-color: #CC8800; } /* Refined gold/amber */
-        .border-accent { border-color: #CC8800; } /* Refined gold/amber */
-        
-        /* Timeline card 3D tilt effect */
+        /* Accent colors using CSS variables */
+        .text-accent { color: var(--accent-main); }
+        .bg-accent { background-color: var(--accent-main); }
+        .border-accent { border-color: var(--accent-main); }
+        .hover\:bg-accent\/10:hover { background-color: rgba(245, 158, 11, 0.1); } /* Custom hover for accent */
+        .shadow-accent { box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.2), 0 4px 6px -2px rgba(245, 158, 11, 0.1); } /* Custom shadow */
+        .hover\:border-accent:hover { border-color: var(--accent-main); }
+
+        /* Timeline card Animation - Changed from tilt to lift and glow */
         .timeline-card {
-            transform-style: preserve-3d;
-            transition: transform 0.5s;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
         }
         .timeline-card:hover {
-            transform: perspective(1000px) rotateY(5deg) rotateX(10deg) scale3d(1.05, 1.05, 1.05);
+            transform: translateY(-8px); /* Lift effect */
+            box-shadow: 0 15px 30px -5px rgba(245, 158, 11, 0.4), 0 8px 15px -5px rgba(245, 158, 11, 0.2); /* Stronger glow */
         }
         /* Reveal animation for sections */
         .reveal {
@@ -59,19 +74,19 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Added min-height for the typewriter text to prevent layout shifts */
+        /* Adjusted min-height for the typewriter text to prevent layout shifts */
         #typewriter-text {
-            min-height: 4rem; /* Adjust this value based on the tallest phrase and font size */
+            min-height: 2.5rem; /* For text-2xl (mobile) */
         }
         /* Responsive min-height for typewriter text */
         @media (min-width: 640px) { /* sm breakpoint */
             #typewriter-text {
-                min-height: 4.5rem; /* Adjust for sm:text-5xl */
+                min-height: 3rem; /* For sm:text-3xl */
             }
         }
         @media (min-width: 768px) { /* md breakpoint */
             #typewriter-text {
-                min-height: 5.5rem; /* Adjust for md:text-6xl */
+                min-height: 3.5rem; /* For md:text-4xl */
             }
         }
 
@@ -83,7 +98,7 @@
             width: 70%; /* Adjust width as needed */
             max-width: 300px;
             height: 100%;
-            background-color: #1a2b40; /* Slightly lighter dark blue */
+            background-color: var(--bg-primary); /* Use primary background for mobile menu */
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
             transition: right 0.3s ease-in-out;
             z-index: 1000;
@@ -101,17 +116,58 @@
             top: 1.5rem;
             right: 1.5rem;
             font-size: 2rem;
-            color: #e6f1ff; /* Lighter blue for close icon */
+            color: var(--text-light); /* Lighter text for close icon */
             cursor: pointer;
         }
         .mobile-menu nav a {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            color: #ccd6f6; /* Light grayish blue for links */
+            color: var(--text-light); /* Light text for links */
             transition: color 0.3s;
         }
         .mobile-menu nav a:hover {
-            color: #CC8800; /* New accent color on hover */
+            color: var(--accent-main); /* Accent color on hover */
+        }
+        /* Image hover effect */
+        .hero-image-container:hover img {
+            transform: scale(1.05); /* Slightly zoom on hover */
+            transition: transform 0.3s ease-in-out;
+        }
+        .hero-image-container {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* About Section Read More/Less styles */
+        .more-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out; /* Slower transition for smooth reveal */
+        }
+        .more-content.expanded {
+            max-height: 500px; /* Sufficiently large value to show all content */
+        }
+        .read-more-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px; /* Fully rounded */
+            background-color: var(--accent-main);
+            color: var(--bg-primary); /* Text color for button */
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .read-more-button:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-2px);
+        }
+        .read-more-button i {
+            transition: transform 0.3s ease-in-out;
+        }
+        .read-more-button.expanded i {
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -123,15 +179,17 @@
             <h1 class="text-xl md:text-2xl font-bold text-accent">TK</h1>
             <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center space-x-6">
-                <a href="#experience" class="text-slate-300 hover:text-accent transition-colors duration-300">Experience</a>
-                <a href="#skills" class="text-slate-300 hover:text-accent transition-colors duration-300">Skills</a>
-                <a href="#achievements" class="text-slate-300 hover:text-accent transition-colors duration-300">Achievements</a>
-                <a href="#education" class="text-slate-300 hover:text-accent transition-colors duration-300">Education</a>
+                <a href="#home" class="text-text-light hover:text-accent transition-colors duration-300">Home</a>
+                <a href="#about" class="text-text-light hover:text-accent transition-colors duration-300">About</a>
+                <a href="#experience" class="text-text-light hover:text-accent transition-colors duration-300">Experience</a>
+                <a href="#skills" class="text-text-light hover:text-accent transition-colors duration-300">Skills</a>
+                <a href="#achievements" class="text-text-light hover:text-accent transition-colors duration-300">Achievements</a>
+                <a href="#education" class="text-text-light hover:text-accent transition-colors duration-300">Education</a>
                 <a href="#contact" class="border border-accent text-accent px-4 py-2 rounded-md hover:bg-accent/10 transition-colors duration-300">Contact</a>
             </nav>
             <!-- Mobile Menu Toggle Button (Hamburger Icon) -->
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white text-2xl focus:outline-none">
+                <button id="mobile-menu-button" class="text-text-light text-2xl focus:outline-none">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -144,40 +202,67 @@
             <i class="fas fa-times"></i>
         </button>
         <nav class="flex flex-col items-center">
-            <a href="#home" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">About</a> <!-- Added About link -->
-            <a href="#experience" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">Experience</a>
-            <a href="#skills" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">Skills</a>
-            <a href="#achievements" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">Achievements</a>
-            <a href="#education" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">Education</a>
-            <a href="#contact" class="text-slate-300 hover:text-accent transition-colors duration-300 mb-6">Contact</a>
+            <a href="#home" class="text-text-light hover:text-accent transition-colors duration-300 mb-6">Home</a>
+            <a href="#about" class="text-text-light hover:text-accent transition-colors duration-300 mb-6">About</a>
+            <a href="#experience" class="text-text-light hover:text-accent transition-colors duration-300 mb-6">Experience</a>
+            <a href="#skills" class="text-text-light hover:text-accent transition-colors duration-300 mb-6">Skills</a>
+            <a href="#achievements" class="text-text-light hover:text-accent transition-colors duration-300 mb-6">Achievements</a>
+            <a href="#education" class="text-text-light hover:text-accent transition-colors duration-300 mb-6">Education</a>
+            <a href="#contact" class="border border-accent text-accent px-6 py-3 rounded-md hover:bg-accent/10 transition-colors duration-300">Contact</a>
         </nav>
     </div>
 
     <main class="container mx-auto px-6">
 
-        <!-- Home/Hero Section - Updated with About content -->
-        <section id="home" class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center px-6 gap-10 md:gap-20 mt-24">
-            <!-- Left: Text Content -->
-            <div class="text-center md:text-left max-w-xl">
-                <p class="text-accent text-sm font-bold uppercase tracking-wide mb-2">Nice to see you here 👋</p>
-                <h1 class="text-4xl sm:text-5xl font-bold text-white">Hi, I'm <span class="text-accent">Tauqir Khan</span></h1>
-                <h3 id="typewriter-text" class="text-3xl sm:text-5xl md:text-6xl font-bold text-slate-400 mt-2"></h3>
+        <!-- Home/Hero Section - Adjusted layout for image positioning -->
+        <section id="home" class="min-h-screen flex flex-col md:flex-row items-center justify-center px-6 gap-10 md:gap-20 mt-24">
+            <!-- Left: Text Content - Now left-aligned -->
+            <div class="text-left max-w-xl md:w-1/2">
+                <!-- Changed greeting content and color -->
+                <p class="text-accent text-sm font-bold uppercase tracking-wide mb-2">Hi, I'm</p>
+                <!-- Changed h1 content and color -->
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-text-light">Tauqir Khan</h1>
+                <!-- Reduced font size for typewriter h3 -->
+                <h3 id="typewriter-text" class="text-2xl sm:text-3xl md:text-4xl font-bold text-text-muted mt-2"></h3>
                 
-                <!-- Moved About section content here -->
-                <p class="text-slate-300 leading-relaxed mt-6">
-                    I am a creative and results-driven B.Tech Computer Science student with a passion for building and scaling digital brands. From SEO-driven content to managing high-growth social media campaigns, I thrive on turning creative strategies into measurable results.
+                <!-- New Welcome/About paragraph -->
+                <p class="text-text-light leading-relaxed mt-6">
+                    Welcome to my profile! I'm Tauqir Khan, a 3rd-year B.Tech Computer Science student passionate about digital marketing, SEO, content creation, and tech innovation. Explore my projects, achievements, and skills — and let’s connect to create impactful digital experiences together!
                 </p>
 
                 <!-- Download CV Button -->
-                <a href="tauqir_khan_resume.pdf" download class="inline-block mt-6 bg-accent text-slate-900 font-bold px-6 py-3 rounded-md hover:bg-amber-400 transition shadow-lg shadow-amber-500/20">
+                <a href="tauqir_khan_resume.pdf" download class="inline-block mt-6 bg-accent text-bg-primary font-bold px-6 py-3 rounded-md hover:bg-accent-dark transition shadow-accent">
                     Download CV
                 </a>
             </div>
 
-            <!-- Right: Image -->
-            <div class="w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] md:w-[360px] md:h-[360px] lg:w-[400px] lg:h-[400px] rounded-lg overflow-hidden shadow-xl shadow-yellow-500/20 hover:scale-105 transition duration-300">
-  <img src="tauqir_khan.jpg" alt="Tauqir Khan" class="w-full h-full object-cover object-center" />
-</div>
+            <!-- Right: Image - Adjusted dimensions and order for desktop -->
+            <!-- On mobile (default), it will be below the text due to flex-col. -->
+            <!-- On desktop (md:), it will be on the right due to md:flex-row and md:order-last. -->
+            <div class="w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-[30rem] lg:w-[28rem] lg:h-[36rem] rounded-lg overflow-hidden shadow-accent hero-image-container mt-10 md:mt-0 md:order-last md:ml-auto">
+                <img src="tauqir_khan.jpg" alt="Tauqir Khan" class="w-full h-full object-cover object-center" />
+            </div>
+        </section>
+
+        <!-- About Section - Re-added as a separate section with Read More -->
+        <section id="about" class="py-24">
+            <h3 class="text-3xl font-bold text-center mb-16 reveal">About Me</h3>
+            <div class="relative max-w-3xl mx-auto">
+                <div class="glass-card p-6 rounded-lg timeline-card">
+                    <p class="text-text-light leading-relaxed">
+                        I’m a creative and results-driven B.Tech Computer Science student with a strong foundation in digital strategy, content creation, and brand building. With hands-on experience in SEO, social media management, and data-driven marketing, I specialize in crafting high-impact content that drives engagement and organic growth. I’ve successfully managed campaigns for startups and student ventures, designed over 50+ SEO-optimized posts, and contributed to brand visibility through consistent storytelling and smart digital tactics.
+                    </p>
+                    <div id="more-about-content" class="more-content">
+                        <p class="text-text-light leading-relaxed mt-4">
+                            My passion lies in scaling digital brands through a mix of creativity, analytics, and user-centric content. From building resumes that stand out to hosting impactful speeches at Toastmasters and leading student initiatives, I thrive on turning ideas into measurable results. As a tech-savvy marketer with a developer’s mindset, I’m constantly learning, evolving, and helping others grow in the digital space.
+                        </p>
+                    </div>
+                    <!-- Creative Read More Button -->
+                    <button id="read-more-button" class="read-more-button mt-4">
+                        Read More <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+            </div>
         </section>
 
         <!-- Experience Section -->
@@ -185,19 +270,19 @@
             <h3 class="text-3xl font-bold text-center mb-16 reveal">Professional Experience</h3>
             <div class="relative max-w-3xl mx-auto">
                 <!-- Vertical timeline line -->
-                <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-slate-700"></div>
+                <div class="absolute left-1/2 -translate-x-1/2 h-full w-0.5 bg-text-muted"></div>
                 
                 <!-- Experience 1: Social Media Manager -->
                 <div class="relative mb-12 reveal">
                     <!-- Timeline dot -->
-                    <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-5 h-5 bg-accent rounded-full border-4 border-slate-800"></div>
+                    <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-5 h-5 bg-accent rounded-full border-4 border-bg-primary"></div>
                     <!-- Card content (right on desktop, full width on mobile) -->
                     <div class="md:w-[calc(50%-2rem)] md:mr-auto text-left md:text-right">
                         <div class="glass-card p-6 rounded-lg timeline-card">
                             <p class="text-sm text-accent mb-1">Nov 2024 - Apr 2025</p>
-                            <h4 class="font-bold text-xl text-slate-100">Social Media Manager</h4>
-                            <p class="text-slate-400 font-semibold mb-2">Skybizz Aviation, Pune</p>
-                            <p class="text-slate-300 text-left">Managed multi-platform content strategy, boosting follower count by 30% in three month and designing over 50+ posts with 90%+ positive feedback.</p>
+                            <h4 class="font-bold text-xl text-text-light">Social Media Manager</h4>
+                            <p class="text-text-muted font-semibold mb-2">Skybizz Aviation, Pune</p>
+                            <p class="text-text-light text-left">Managed multi-platform content strategy, boosting follower count by 30% in three month and designing over 50+ posts with 90%+ positive feedback.</p>
                         </div>
                     </div>
                 </div>
@@ -205,14 +290,14 @@
                 <!-- Experience 2: Digital Marketing Associate -->
                 <div class="relative mb-12 reveal">
                     <!-- Timeline dot -->
-                    <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-5 h-5 bg-accent rounded-full border-4 border-slate-800"></div>
+                    <div class="absolute left-1/2 -translate-x-1/2 mt-2 w-5 h-5 bg-accent rounded-full border-4 border-bg-primary"></div>
                     <!-- Card content (left on desktop, full width on mobile) -->
                     <div class="md:w-[calc(50%-2rem)] md:ml-auto">
                         <div class="glass-card p-6 rounded-lg timeline-card">
                            <p class="text-sm text-accent mb-1">Oct 2024 - Nov 2024</p>
-                           <h4 class="font-bold text-xl text-slate-100">Digital Marketing Associate</h4>
-                           <p class="text-slate-400 font-semibold mb-2">Globussoft, Bhilai</p>
-                           <p class="text-slate-300">Executed high-impact SEO strategies, building 200+ quality backlinks and creating optimized content that doubled organic traffic within a month.</p>
+                           <h4 class="font-bold text-xl text-text-light">Digital Marketing Associate</h4>
+                           <p class="text-text-muted font-semibold mb-2">Globussoft, Bhilai</p>
+                           <p class="text-text-light">Executed high-impact SEO strategies, building 200+ quality backlinks and creating optimized content that doubled organic traffic within a month.</p>
                         </div>
                     </div>
                 </div>
@@ -226,7 +311,7 @@
                 <!-- Digital Marketing Skills -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-all duration-300 hover:border-accent hover:-translate-y-2">
                     <h4 class="font-bold text-xl mb-3 text-accent">Digital Marketing</h4>
-                    <ul class="space-y-2 text-slate-300">
+                    <ul class="space-y-2 text-text-light">
                         <li>SEO Optimization</li>
                         <li>Social Media Marketing</li>
                         <li>Content Marketing</li>
@@ -236,7 +321,7 @@
                 <!-- Content & Design Skills -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-all duration-300 hover:border-accent hover:-translate-y-2" style="transition-delay: 100ms;">
                     <h4 class="font-bold text-xl mb-3 text-accent">Content & Design</h4>
-                    <ul class="space-y-2 text-slate-300">
+                    <ul class="space-y-2 text-text-light">
                         <li>Content Writing</li>
                         <li>Content Creation</li>
                         <li>Brand Storytelling</li>
@@ -246,7 +331,7 @@
                 <!-- Professional Skills -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-all duration-300 hover:border-accent hover:-translate-y-2" style="transition-delay: 200ms;">
                     <h4 class="font-bold text-xl mb-3 text-accent">Professional Skill</h4>
-                    <ul class="space-y-2 text-slate-300">
+                    <ul class="space-y-2 text-text-light">
                         <li>Public Speaking</li>
                         <li>Leadership & Teamwork</li>
                         <li>Communication</li>
@@ -257,35 +342,33 @@
         
         <!-- Achievements Section -->
         <section id="achievements" class="py-24">
-            <h3 class="text-3xl font-bold text-center mb-16 reveal">Achievements</h3> <!-- Changed title to "Achievements" -->
+            <h3 class="text-3xl font-bold text-center mb-16 reveal">Achievements</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto mb-16">
                 <!-- Achievement Card 1 -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-2">
                     <p class="text-6xl font-bold text-accent mb-2">25%</p>
-                    <p class="font-semibold text-slate-200">Organic Traffic Boost</p>
-                    <p class="text-sm text-slate-400">SEO & Content Optimization</p>
+                    <p class="font-semibold text-text-light">Organic Traffic Boost</p>
+                    <p class="text-sm text-text-muted">SEO & Content Optimization</p>
                 </div>
                 <!-- Achievement Card 2 -->
                  <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-2">
                     <p class="text-6xl font-bold text-accent mb-2">50+</p>
-                    <p class="font-semibold text-slate-200">Content Pieces Designed</p>
-                    <p class="text-sm text-slate-400">With 90%+ Positive Feedback</p>
-                </div>
+                    <p class="font-semibold text-text-light">Content Pieces Designed</p>
+                    <p class="text-sm text-text-muted">With 90%+ Positive Feedback</p>
+        </div>
                 <!-- Achievement Card 3 -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-2">
                     <p class="text-6xl font-bold text-accent mb-2">200+</p>
-                    <p class="font-semibold text-slate-200">High-Quality Backlinks</p>
-                    <p class="text-sm text-slate-400">Achieved in 4 Weeks</p>
+                    <p class="font-semibold text-text-light">High-Quality Backlinks</p>
+                    <p class="text-sm text-text-muted">Achieved in 4 Weeks</p>
                 </div>
                 <!-- Achievement Card 4 -->
                 <div class="reveal glass-card p-6 rounded-lg text-center transition-transform hover:scale-105 lg:col-span-3">
                     <p class="text-6xl font-bold text-accent mb-2">30%</p>
-                    <p class="font-semibold text-slate-200">Social Follower Growth</p>
-                    <p class="text-sm text-slate-400">Across all major platforms</p>
+                    <p class="font-semibold text-text-light">Social Follower Growth</p>
+                    <p class="text-sm text-text-muted">Across all major platforms</p>
                 </div>
             </div>
-        
-            <!-- The "Key Performance Metrics" chart section has been removed. -->
         </section>
 
         <!-- Education Section -->
@@ -294,26 +377,26 @@
             <div class="grid grid-cols-1 md:grid-cols-5 gap-8 max-w-6xl mx-auto">
                 <!-- Education Details -->
                 <div class="reveal md:col-span-2 glass-card p-6 rounded-lg">
-                    <h4 class="font-bold text-xl text-slate-100 mb-4">Education</h4>
+                    <h4 class="font-bold text-xl text-text-light mb-4">Education</h4>
                     <div class="border-l-4 border-accent pl-4 mb-6">
-                        <p class="font-bold text-slate-200">B.Tech in Computer Science (AI & ML)</p>
-                        <p class="text-slate-400">RCET, Bhilai, Chhattisgarh</p>
-                        <p class="text-sm text-slate-500">2022 - 2026</p>
+                        <p class="font-bold text-text-light">B.Tech in Computer Science (AI & ML)</p>
+                        <p class="text-text-muted">RCET, Bhilai, Chhattisgarh</p>
+                        <p class="text-sm text-text-muted">2022 - 2026</p>
                     </div>
                     <div class="border-l-4 border-accent pl-4">
-                        <p class="font-bold text-slate-200">Higher Secondary School Certificate</p>
-                        <p class="text-slate-400">Patna Muslim High School, Patna, Bihar</p>
-                        <p class="text-sm text-slate-500">2022</p>
+                        <p class="font-bold text-text-light">Higher Secondary School Certificate</p>
+                        <p class="text-text-muted">Patna Muslim High School, Patna, Bihar</p>
+                        <p class="text-sm text-text-muted">2022</p>
                     </div>
                 </div>
                 <!-- Certifications Details -->
                 <div class="reveal md:col-span-3 glass-card p-6 rounded-lg">
-                    <h4 class="font-bold text-xl text-slate-100 mb-4">Certifications</h4>
-                     <ul class="space-y-3 text-slate-300 columns-1 sm:columns-2">
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">Udemy</span> - SEO: Link Building & Content Writing</span></li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">Hubspot Academy</span> - Content Marketing </span></li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">Google</span> - Fundamental of Digital Marketing </span></li>
-                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-slate-200">E-marketing Institute </span> - SEO</span></li>
+                    <h4 class="font-bold text-xl text-text-light mb-4">Certifications</h4>
+                     <ul class="space-y-3 text-text-light columns-1 sm:columns-2">
+                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-text-light">Udemy</span> - SEO: Link Building & Content Writing</span></li>
+                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-text-light">Hubspot Academy</span> - Content Marketing </span></li>
+                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-text-light">Google</span> - Fundamental of Digital Marketing </span></li>
+                        <li class="flex items-start"><span class="text-accent mr-3 mt-1">&#10003;</span><span><span class="font-semibold text-text-light">E-marketing Institute </span> - SEO</span></li>
                     </ul>
                 </div>
             </div>
@@ -327,7 +410,7 @@
             <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center reveal">
                 <!-- Location -->
                 <div class="glass-card p-4 rounded-md">
-                    <div class="text-xl text-white mb-2">
+                    <div class="text-xl text-text-light mb-2">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <p class="text-sm font-semibold text-accent">Bhilai, Chhattisgarh</p>
@@ -335,7 +418,7 @@
 
                 <!-- Phone -->
                 <div class="glass-card p-4 rounded-md">
-                    <div class="text-xl text-white mb-2">
+                    <div class="text-xl text-text-light mb-2">
                         <i class="fas fa-phone-alt"></i>
                     </div>
                     <a href="tel:+918544634850" class="text-sm font-semibold text-accent hover:underline">
@@ -345,16 +428,17 @@
 
                 <!-- Email -->
                 <div class="glass-card p-4 rounded-md">
-                    <div class="text-xl text-white mb-2">
+                    <div class="text-xl text-text-light mb-2">
                         <i class="fas fa-envelope"></i>
                     </div>
                     <a href="mailto:tauqirkhan281@gmail.com" class="text-sm font-semibold text-accent hover:underline">
                         tauqirkhan281@gmail.com
                     </a>
                 </div>
-<!-- Resume -->
+
+                <!-- Resume -->
                 <div class="glass-card p-4 rounded-md">
-                    <div class="text-xl text-white mb-2">
+                    <div class="text-xl text-text-light mb-2">
                         <i class="fas fa-file-alt"></i>
                     </div>
                     <a href="tauqir_khan_resume.pdf" download class="text-sm font-semibold text-accent hover:underline">
@@ -365,7 +449,7 @@
 
             <!-- Social Icons -->
             <div class="mt-10 text-center reveal">
-                <h4 class="text-lg font-bold text-slate-100 mb-4">Follow Me</h4>
+                <h4 class="text-lg font-bold text-text-light mb-4">Follow Me</h4>
                 <div class="flex justify-center space-x-6 text-3xl text-accent">
                     <a href="https://www.linkedin.com/in/tauqir-khan-79813a251/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                     <a href="https://youtube.com/@thegrowthhub17" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
@@ -379,7 +463,7 @@
 
     <script>
         // Typewriter effect for the hero section
-        const phrases = ["I Write Content that Connects.", "I Drive Growth with SEO.", "I Craft Engaging Content"];
+        const phrases = ["I drive growth with SEO", "I create impactful content", "I build and scale digital brands"];
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
@@ -430,7 +514,6 @@
 
         window.onload = function() {
             typeWriter(); // Start typewriter effect on load
-            // Chart.js initialization code has been removed as requested.
         };
 
         // Mobile Menu JavaScript
@@ -456,7 +539,24 @@
                 document.body.style.overflow = ''; // Restore scrolling
             });
         });
+
+        // About Section Read More/Less JavaScript
+        const readMoreButton = document.getElementById('read-more-button');
+        const moreAboutContent = document.getElementById('more-about-content');
+        const readMoreIcon = readMoreButton.querySelector('i');
+
+
+        if (readMoreButton && moreAboutContent && readMoreIcon) {
+            readMoreButton.addEventListener('click', () => {
+                moreAboutContent.classList.toggle('expanded');
+                readMoreButton.classList.toggle('expanded'); // Toggle class on button for icon rotation
+                if (moreAboutContent.classList.contains('expanded')) {
+                    readMoreButton.childNodes[0].nodeValue = 'Show Less '; // Update text node
+                } else {
+                    readMoreButton.childNodes[0].nodeValue = 'Read More '; // Update text node
+                }
+            });
+        }
     </script>
 </body>
 </html>
-       
